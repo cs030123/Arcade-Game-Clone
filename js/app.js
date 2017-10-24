@@ -16,15 +16,10 @@ var perWidth = 101;
 * @param {number} y 对象纵坐标
 * @param {number} sprite 图片对象
 */
-var Actor = function(x, y，sprite) {
+var Actor = function(x, y, sprite) {
     this.x = x;
     this.y = y;
     this.sprite = sprite;
-};
-
-//在屏幕上绘制对象
-Actor.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x * perWidth, this.y * perHeight);
 };
 
 // 敌人类
@@ -45,6 +40,11 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
+//在屏幕上绘制敌人对象
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x * perWidth, this.y * perHeight);
+};
+
 // 玩家类
 var Player = function(x, y){
     Actor.call(this, x, y, 'images/char-boy.png');
@@ -57,6 +57,7 @@ Player.prototype.update = function(dt){
     
 };
 
+//在屏幕上绘制玩家对象
 Player.prototype.render = function(){
     //如果玩家成功到达目的地，则呈现不停跳动的动画
     if (this.y < 1) {
