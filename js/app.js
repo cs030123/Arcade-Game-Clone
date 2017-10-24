@@ -72,6 +72,7 @@ Player.prototype.render = function(){
     }
 };
 
+//响应键盘上下左右键移动玩家
 Player.prototype.handleInput = function(turn) {
     switch(turn) {
         case 'up':
@@ -80,7 +81,7 @@ Player.prototype.handleInput = function(turn) {
             }
         break;
         case 'down':
-            if (this.y < 4) {
+            if (this.y < 5) {
                 this.y = this.y + 1;
             }
         break;
@@ -99,6 +100,7 @@ Player.prototype.handleInput = function(turn) {
     }
 };
 
+//检测玩家与敌人是否相遇
 function checkCollisions(){
     var isConflicting = false;
     allEnemies.forEach(function(enemy) {
